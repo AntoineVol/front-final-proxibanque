@@ -1,0 +1,15 @@
+.principal {
+    min-height: 1000px;
+    background-image: url('../../assets/background_nosurvey_md.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    color:tomato;
+    size: 3em;
+}
+.secondary{
+    min-height:inherit;
+}
+button{
+    margin: 1em;
+}
