@@ -1,0 +1,5 @@
+<form class="form" (ngSubmit)="submit(commentForm)" #commentForm="ngForm">
+  <legend>Commentaire</legend>
+  <textarea id="comment" name="comment" class="form-control" [(ngModel)]="response.comment"></textarea>
+  <button class="btn btn-success">Envoyez nous votre avis</button>
+</form>

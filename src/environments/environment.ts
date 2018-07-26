@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/final_proxibanque/api/client',
-
+  ApiUrl:"http://localhost:8080/final_proxibanque/api/"
 };
 
 /*

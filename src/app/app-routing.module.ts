@@ -3,12 +3,14 @@ import { NoSurveyComponent } from './no-survey/no-survey.component'
 import { RouterModule, Routes } from "@angular/router"
 import { AppComponent } from './app.component';
 import { ClientComponent } from './client/client.component';
+import { HomeComponent } from './home/home.component';
+import { SurveyCommentComponent } from './survey-comment/survey-comment.component';
 
 export const ROUTES: Routes = [
   {path:'', component:AppComponent},
-  {path:'home', component:NoSurveyComponent},
   {path:'client', component:ClientComponent},
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  {path:'home', component:HomeComponent},
+  {path:'comment', component:SurveyCommentComponent}
 ];
 
 @NgModule({
