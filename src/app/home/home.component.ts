@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(surveyService : SurveyService) { }
 
   ngOnInit() {
-    this.survey = surveyService.
+    //this.survey = surveyService.
   }
 
 }

@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
-import { NoSurveyComponent } from '../app/no-survey/no-survey.component'
+import { NoSurveyComponent } from './no-survey/no-survey.component'
 import { RouterModule, Routes } from "@angular/router"
 import { AppComponent } from './app.component';
+import { ClientComponent } from './client/client.component';
 
-const ROUTES: Routes = [
+export const ROUTES: Routes = [
   {path:'', component:AppComponent},
-  {path:'home', component:NoSurveyComponent}
+  {path:'home', component:NoSurveyComponent},
+  {path:'client', component:ClientComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -8,7 +8,8 @@ export class SurveyService {
 
   constructor() { }
 
-  public read : Survey(){
+  public read(): Survey{
 
+    return null;
   }
 }
