@@ -9,10 +9,13 @@ import { SurveyService } from '../services/survey.service';
 })
 export class HomeComponent implements OnInit {
   survey : Survey;
-  constructor(surveyService : SurveyService) { }
+  constructor(private surveyService : SurveyService) {
+    this.survey=new Survey();
+   }
 
   ngOnInit() {
-    this.survey = surveyService.
+    this.surveyService.readActive().subscribe((s)=> (this.survey=s))
+    console.log(this.survey);
   }
 
 }
