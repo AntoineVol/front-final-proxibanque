@@ -7,10 +7,10 @@
           <form #idForm = "ngForm" (ngSubmit)="oldC(idForm)">
             <div class="form-group">
               <label for="number">Numéro d'identification</label>
-              <input id="number" type="text" class="form-control" required malength="8">
+              <input id="number" type="text" class="form-control" required maxlength="8">
             </div>
+            <button  class="btn btn-primary">Valider</button>
           </form>
-          <button  class="btn btn-primary">Valider</button>
         </div>
       </div>
       <div class="" style="width: 18rem;"></div>
@@ -20,21 +20,23 @@
           <form #createForm = "ngForm" (ngSubmit)="newC(createForm)">
             <div class="form-group">
               <label for="name">Nom</label>
-              <input id="name" name="name" type="text" class="form-control" required  [(ngModel)]="model.name">
+              <input id="name" name="name" type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" required  [(ngModel)]="model.name">
+              <span class="text-danger"  [class.d-none] ="name.valid || name.untouched" > nom est requis </span>
             </div>
             <div class="form-group">
                 <label for="firstName">Prénom</label>
-                <input id="firstName" name="firstName" type="text" class="form-control" required [(ngModel)]="model.firstName">
-            </div>
+                <input id="firstName" name="firstName" #prenom="ngModel" type="text" [class.is-invalid]="prenom.invalid && prenom.touched" class="form-control" required [(ngModel)]="model.firstName">
+                <span class="text-danger" [class.d-none] ="prenom.valid || prenom.untouched"> prénom est requis </span>
+              </div>
             <div class="form-group"> 
                 <label for="email">Email</label>
-                <input id="email" name="email" type="text" class="form-control" [(ngModel)]="model.email">
+                <input id="email" name="email" type="text" #email="ngModel" class="form-control" required [(ngModel)]="model.email">
             </div>
             <div class="form-group"> 
                 <label for="tel">Tel</label>
-                <input id="tel" name="tel" type="text" class="form-control" [(ngModel)]="model.tel">
+                <input id="tel" name="tel" type="text" #phone ="ngModel"  class="form-control" [(ngModel)]="model.tel">
             </div>
-            <button  class="btn btn-primary">Valider</button>
+            <button  [disabled]="createForm.form.invalid" class="btn btn-primary">Valider</button>
           </form>
         </div>
       </div>
