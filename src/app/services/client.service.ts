@@ -9,23 +9,23 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class ClientService {
-  private apiUrl: string;
+  private ApiUrl: string;
 
   constructor(private httpClient: HttpClient,  private router : Router) {
-    this.apiUrl = ENV.apiUrl;
+    this.ApiUrl = ENV.ApiUrl +"/client";
    }
 
 
   createClient (client : Client){
 
-	  this.httpClient.post<Client>(this.apiUrl, client)
+	  this.httpClient.post<Client>(this.ApiUrl, client)
 			.subscribe((newClient) => {
 				// Si HTTP POST success.
         console.log(newClient);
         this.router.navigateByUrl('home');
-			}, (response: HttpErrorResponse) => {
+			}, (error) => {
 				// Sinon si erreur.
-				console.log(response.message);
+				console.log(error);
 			});
   }
 
