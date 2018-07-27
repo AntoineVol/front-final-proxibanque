@@ -11,11 +11,19 @@ export class HomeComponent implements OnInit {
   survey : Survey;
   constructor(private surveyService : SurveyService) {
     this.survey=new Survey();
+
    }
 
   ngOnInit() {
-    this.surveyService.readActive().subscribe((s)=> (this.survey=s))
-    console.log(this.survey);
+    // this.surveyService.readActive().subscribe((s)=> (this.survey=s))
+    // console.log(this.survey);
   }
 
+  ngAfterViewInit(){
+
+    this.surveyService.readActive().subscribe((s)=> (
+      setTimeout(()=>this.survey=s)
+    ))
+    console.log(this.survey);
+  }
 }
