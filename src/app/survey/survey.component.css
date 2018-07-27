@@ -1,3 +1,7 @@
-button {
+.principal {
+    min-height: 1000px;
+}
+img {
+    height: 4em;
     margin: 1em;
 }
