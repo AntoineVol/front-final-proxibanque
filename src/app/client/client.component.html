@@ -20,7 +20,7 @@
           <form #createForm = "ngForm" (ngSubmit)="newC(createForm)">
             <div class="form-group">
               <label for="name">Nom</label>
-              <input id="name" name="name" type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" required  [(ngModel)]="model.name">
+              <input id="name" name="name" type="text" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" required  [(ngModel)]="model.lastName">
               <span class="text-danger"  [class.d-none] ="name.valid || name.untouched" > nom est requis </span>
             </div>
             <div class="form-group">
