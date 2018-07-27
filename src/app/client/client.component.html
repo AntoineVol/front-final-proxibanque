@@ -9,10 +9,10 @@
     <form #idForm = "ngForm" (ngSubmit)="oldC(idForm)">
       <div class="form-group">
         <label for="number">Numéro d'identification</label>
-        <input id="number" type="text" class="form-control" required malength="8">
+        <input id="number" type="text" name="identifiant" class="form-control" required malength="8" [(ngModel)]="identifiant">
       </div>
+      <button  class="btn btn-primary">Valider</button>
     </form>
-    <button  class="btn btn-primary">Valider</button>
   </div>
 </div>
 </div>

@@ -13,18 +13,21 @@ import { Survey } from '../POJO/survey';
 export class ClientService {
   private apiUrlClient:string;
   private apiUrlResponse:string;
+  private apiUrlClientNumero:string;
+  private oldClient : Client;
 
   constructor(private httpClient: HttpClient,  private router : Router) {
     this.apiUrlClient = ENV.ApiUrl +"client";
-    this.apiUrlResponse = ENV.ApiUrl +"response"
+    this.apiUrlResponse = ENV.ApiUrl +"response";
+    this.apiUrlClientNumero = ENV.ApiUrl +"client"+"/numero";
+
    }
 
   createClient (client : Client, survey : Survey){
 	  this.httpClient.post<Client>(this.apiUrlClient, client)
 			.subscribe((newClient) => {
 				// Si HTTP POST success.
-        console.log(" newClient " + newClient);
-        let res : Response = new Response;
+        let res : Response = new Response();
         res.newClient = true;
         res.positiveResponse = true;
         res.survey = survey; 
@@ -38,12 +41,30 @@ export class ClientService {
   }
 
   createResponse (response : Response){
-    console.log("response " + response.survey);
+    console.log("response envoyé" + response.survey);
     this.httpClient.post<Response>(this.apiUrlResponse, response).subscribe(
-      (s) => console.log(s),
-      (error) => console.log(error)
+        (s) => {
+          console.log(s);
+        } ,     
+       (error) => console.log(error)
     )
 
+  }
+
+
+  getClient(identifiant : string, survey : Survey) {
+    let client : Client = new Client();
+    this.httpClient.get<Client>(this.apiUrlClientNumero + `/${identifiant}`).subscribe(
+      (oldClient) => {
+        let res : Response = new Response;
+        res.newClient = true;
+        res.positiveResponse = true;
+        res.survey = survey; 
+        res.client = oldClient;      
+        this.createResponse(res);
+        this.router.navigateByUrl('messageConfirmation');
+      }
+    )
   }
 
 
