@@ -24,20 +24,17 @@ export class ClientComponent implements OnInit {
     this.model = new Client();
     this.surveyService.survey.subscribe((s) => this.survey= s);
     console.log(this.survey);  
-		//this.onCreate = new EventEmitter();
-	//	this.onSave = new EventEmitter();
   }
 
   newC(form: NgForm) {
     let data: Client = JSON.parse(JSON.stringify(this.model));
+    data.clientNumber = (Math.random()*100000000).toFixed(0);
+    console.log(" data ", data);
     this.clientService.createClient(data, this.survey);
-      //this.onCreate.emit(data);
-      form.resetForm;
+    form.resetForm;
     } 
     
     oldC(form: NgForm)  {
-       // this.onSave.emit(identifiant);
-      // this.clientService.createResponse();
         form.resetForm;
     } 
 

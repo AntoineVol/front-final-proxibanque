@@ -20,15 +20,15 @@ export class ClientService {
    }
 
   createClient (client : Client, survey : Survey){
-
 	  this.httpClient.post<Client>(this.apiUrlClient, client)
 			.subscribe((newClient) => {
 				// Si HTTP POST success.
-        console.log(newClient);
+        console.log(" newClient " + newClient);
         let res : Response = new Response;
         res.newClient = true;
         res.positiveResponse = true;
-        res.survey = survey;       
+        res.survey = survey; 
+        res.client = newClient;      
         this.createResponse(res);
         this.router.navigateByUrl('messageConfirmation');
 			}, (error) => {
@@ -38,7 +38,7 @@ export class ClientService {
   }
 
   createResponse (response : Response){
-    console.log("response " + response);
+    console.log("response " + response.survey);
     this.httpClient.post<Response>(this.apiUrlResponse, response).subscribe(
       (s) => console.log(s),
       (error) => console.log(error)

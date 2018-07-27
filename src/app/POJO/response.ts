@@ -1,4 +1,5 @@
 import { Survey } from "./survey";
+import { Client } from "./client";
 
 export class Response {
     id:number;
@@ -6,6 +7,7 @@ export class Response {
     positiveResponse : boolean;
     newClient : boolean;
     survey : Survey;
+    client : Client;
 
     constructor(){
 
