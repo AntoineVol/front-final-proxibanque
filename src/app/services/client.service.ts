@@ -4,32 +4,45 @@ import { environment as ENV } from '../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {Router} from '@angular/router';
+import { Response } from '../POJO/response';
+import { Survey } from '../POJO/survey';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  private ApiUrl: string;
+  private apiUrlClient:string;
+  private apiUrlResponse:string;
 
   constructor(private httpClient: HttpClient,  private router : Router) {
-    this.ApiUrl = ENV.ApiUrl +"/client";
+    this.apiUrlClient = ENV.ApiUrl +"client";
+    this.apiUrlResponse = ENV.ApiUrl +"response"
    }
 
+  createClient (client : Client, survey : Survey){
 
-  createClient (client : Client){
-
-	  this.httpClient.post<Client>(this.ApiUrl, client)
+	  this.httpClient.post<Client>(this.apiUrlClient, client)
 			.subscribe((newClient) => {
 				// Si HTTP POST success.
         console.log(newClient);
-        this.router.navigateByUrl('home');
+        let res : Response = new Response;
+        res.newClient = true;
+        res.positiveResponse = true;
+        res.survey = survey;       
+        this.createResponse(res);
+        this.router.navigateByUrl('messageConfirmation');
 			}, (error) => {
 				// Sinon si erreur.
 				console.log(error);
 			});
   }
 
-  createResponse (identifiant : String){
+  createResponse (response : Response){
+    console.log("response " + response);
+    this.httpClient.post<Response>(this.apiUrlResponse, response).subscribe(
+      (s) => console.log(s),
+      (error) => console.log(error)
+    )
 
   }
 

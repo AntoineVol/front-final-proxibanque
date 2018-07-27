@@ -12,6 +12,7 @@ import { ClientService } from './services/client.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SurveyCommentComponent } from './survey-comment/survey-comment.component';
 import { CommentConfirmationComponent } from './comment-confirmation/comment-confirmation.component';
+import { ConfirmationMessageComponent } from './confirmation-message/confirmation-message.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CommentConfirmationComponent } from './comment-confirmation/comment-con
     HomeComponent,
     SurveyCommentComponent,
     CommentConfirmationComponent,
-    ClientComponent   
+    ClientComponent,
+    ConfirmationMessageComponent   
   ],
   imports: [
     BrowserModule,

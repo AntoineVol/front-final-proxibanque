@@ -6,4 +6,8 @@ export class Response {
     positiveResponse : boolean;
     newClient : boolean;
     survey : Survey;
+
+    constructor(){
+
+    }
 }

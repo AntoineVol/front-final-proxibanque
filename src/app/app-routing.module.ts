@@ -6,13 +6,15 @@ import { ClientComponent } from './client/client.component';
 import { HomeComponent } from './home/home.component';
 import { SurveyCommentComponent } from './survey-comment/survey-comment.component';
 import { CommentConfirmationComponent } from './comment-confirmation/comment-confirmation.component';
+import { ConfirmationMessageComponent } from './confirmation-message/confirmation-message.component';
 
 export const ROUTES: Routes = [
   {path:'', component:AppComponent},
   {path:'home', component:HomeComponent},
   {path:'client', component:ClientComponent},
   {path:'comment', component:SurveyCommentComponent},
-  {path:'commentConfirmation', component:CommentConfirmationComponent}
+  {path:'commentConfirmation', component:CommentConfirmationComponent},
+  {path:'messageConfirmation', component:ConfirmationMessageComponent}
 ];
 
 @NgModule({
