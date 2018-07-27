@@ -4,6 +4,7 @@ import { Response } from '../POJO/response';
 import { ResponseService } from '../services/response.service';
 import { SurveyService } from '../services/survey.service';
 import { Survey } from '../POJO/survey';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-survey-comment',
@@ -14,12 +15,12 @@ export class SurveyCommentComponent implements OnInit {
   private response : Response;
   private survey : Survey;
 
-  constructor(private responseService : ResponseService, private surveyService : SurveyService) {
+  constructor(private responseService : ResponseService, private surveyService : SurveyService, private router : Router) {
     this.response=new Response();
    }
 
   ngOnInit() {
-    this.surveyService.readActive().subscribe((s)=> (this.survey=s))
+    this.surveyService.survey.subscribe((s)=> (this.survey=s))
   }
 
   submit(commentForm : NgForm){
@@ -29,5 +30,6 @@ export class SurveyCommentComponent implements OnInit {
     newResponse.survey = this.survey;
     this.responseService.create(newResponse);
     commentForm.reset();
+    this.router.navigate(['commentConfirmation'])
   }
 }

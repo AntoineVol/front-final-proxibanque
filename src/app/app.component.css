@@ -1,0 +1,7 @@
+.principal {
+    min-height: 700px;
+    background-image: url('../assets/background_nosurvey_1000x700.jpg');
+    background-size:cover;
+    background-repeat: no-repeat;
+
+}
