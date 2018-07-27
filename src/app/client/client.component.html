@@ -1,49 +1,42 @@
-<div class="container-fluid">
-
-  <div class ="row justify-content-center">
-
-  <div class="col-4">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Identifiez-vous</h5>   
-    <form #idForm = "ngForm" (ngSubmit)="oldC(idForm)">
-      <div class="form-group">
-        <label for="number">Numéro d'identification</label>
-        <input id="number" type="text" class="form-control" required malength="8">
+<div class="center-content d-flex justify-content-center align-items-center ">
+    <div class="card-deck">
+      <div class="card" style="width: 18rem;">
+        <img src="../../assets/user.svg" class="logo">
+        <div class="card-body">
+          <h5 class="card-title">Identifiez-vous</h5>   
+          <form #idForm = "ngForm" (ngSubmit)="oldC(idForm)">
+            <div class="form-group">
+              <label for="number">Numéro d'identification</label>
+              <input id="number" type="text" class="form-control" required malength="8">
+            </div>
+          </form>
+          <button  class="btn btn-primary">Valider</button>
+        </div>
       </div>
-    </form>
-    <button  class="btn btn-primary">Valider</button>
+      <div class="" style="width: 18rem;"></div>
+      <div class="card " style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Nouveau client</h5>   
+          <form #createForm = "ngForm" (ngSubmit)="newC(createForm)">
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input id="name" name="name" type="text" class="form-control" required  [(ngModel)]="model.name">
+            </div>
+            <div class="form-group">
+                <label for="firstName">Prénom</label>
+                <input id="firstName" name="firstName" type="text" class="form-control" required [(ngModel)]="model.firstName">
+            </div>
+            <div class="form-group"> 
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text" class="form-control" [(ngModel)]="model.email">
+            </div>
+            <div class="form-group"> 
+                <label for="tel">Tel</label>
+                <input id="tel" name="tel" type="text" class="form-control" [(ngModel)]="model.tel">
+            </div>
+            <button  class="btn btn-primary">Valider</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-</div>
-<div class="vl" style="border-left: 6 px solid green; height: 500px;"></div>
-<div class="col-4">
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Nouveau client</h5>   
-    <form #createForm = "ngForm" (ngSubmit)="newC(createForm)">
-      <div class="form-group">
-        <label for="name">Nom</label>
-        <input id="name" name="name" type="text" class="form-control" required  [(ngModel)]="model.name">
-      </div>
-      <div class="form-group">
-          <label for="firstName">Prénom</label>
-          <input id="firstName" name="firstName" type="text" class="form-control" required [(ngModel)]="model.firstName">
-      </div>
-      <div class="form-group"> 
-          <label for="email">Email</label>
-          <input id="email" name="email" type="text" class="form-control" [(ngModel)]="model.email">
-      </div>
-      <div class="form-group"> 
-          <label for="tel">Tel</label>
-          <input id="tel" name="tel" type="text" class="form-control" [(ngModel)]="model.tel">
-      </div>
-      <button  class="btn btn-primary">Valider</button>
-    </form>
-
-  </div>
-</div>
-</div>
-
-</div>
-</div>
