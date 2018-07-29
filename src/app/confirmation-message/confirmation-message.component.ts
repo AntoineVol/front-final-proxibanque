@@ -17,6 +17,8 @@ export class ConfirmationMessageComponent implements OnInit {
   ngOnInit() {
     this.surveyService.survey.subscribe((s) => this.survey= s);
     this.calculDiffDay();
+    console.log("passage par init");
+    
   }
 
   calculDiffDay(){

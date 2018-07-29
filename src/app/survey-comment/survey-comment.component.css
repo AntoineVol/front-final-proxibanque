@@ -1,5 +1,8 @@
-.comment{
-        min-height: 1000px;
+.principal {
+    min-height: 49em;
+}
+.logo{
+    height: 12em;
 }
 .form-card{
     width: 80%
