@@ -1,5 +1,5 @@
-.center-content{
-    min-height: 1000px;
+.principal {
+    min-height: 40em;
 }
 .secondary{
     min-height:inherit;

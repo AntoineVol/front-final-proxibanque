@@ -1,7 +1,12 @@
-.center-content{
-    min-height: 1000px;
+.principal {
+    min-height: 49em;
 }
 .logo{
     height: 15em;
 }
-
+.ou{
+    font-size: 4em;
+    width: 18rem;
+    color: white;
+    /* font-weight: bold; */
+}

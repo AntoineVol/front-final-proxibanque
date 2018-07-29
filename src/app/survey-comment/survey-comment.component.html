@@ -10,15 +10,14 @@
 <!-- <div class="container-fluid">
   <div class ="row justify-content-center">
     <div class="col-4"> -->
-        <div class="comment d-flex justify-content-center align-items-center">
-
+    <div class="principal d-flex justify-content-center align-items-center">
       <div class="card form-card" >
         <div class="card-body">
           <h5 class="card-title">Commentaire :</h5>   
           <form class="form" (ngSubmit)="submit(commentForm)" #commentForm="ngForm">
             <div class="form-group">
               <!-- <label for="comment">Commentaire label</label> -->
-              <textarea id="comment" name="comment" class="form-control" [(ngModel)]="response.comment" placeholder="Aidez nous à améliorer notre offre"></textarea>
+              <textarea id="comment" name="comment" class="form-control" [(ngModel)]="response.comment" placeholder="Aidez-nous à améliorer notre offre"></textarea>
             </div>
             <button  type="submit" class="btn btn-primary">Envoyez nous votre avis</button>
           </form>

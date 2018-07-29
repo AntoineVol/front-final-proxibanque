@@ -16,7 +16,6 @@ export class SurveyService {
     this.subject = new BehaviorSubject(new Survey());
   }
 
-  
 	get survey(): Observable<Survey> {
 		return this.subject.asObservable();
 }
