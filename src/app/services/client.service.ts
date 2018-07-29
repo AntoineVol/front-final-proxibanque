@@ -28,7 +28,6 @@ export class ClientService {
 			.subscribe((newClient) => {
 				// Si HTTP POST success.   
         this.createResponse(newClient, survey);
-        this.router.navigateByUrl('messageConfirmation');
 			}, (error) => {
 				// Sinon si erreur.
 				console.log(error);
@@ -44,6 +43,7 @@ export class ClientService {
     this.httpClient.post<Response>(this.apiUrlResponse, response).subscribe(
         (s) => {
           console.log(s);
+          this.router.navigateByUrl('messageConfirmation');
         } ,     
        (error) => console.log(error)
     )
