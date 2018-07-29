@@ -4,7 +4,6 @@ import { NgForm } from '@angular/forms';
 import { ClientService } from '../services/client.service';
 import { SurveyService } from '../services/survey.service';
 import { Survey } from '../POJO/survey';
-import { Response } from '../POJO/response';
 
 @Component({
   selector: 'app-client',
@@ -19,7 +18,9 @@ export class ClientComponent implements OnInit {
   private survey : Survey;
   private errorClient : String;
 
-  constructor(private clientService : ClientService, private surveyService : SurveyService) { }
+  constructor(private clientService : ClientService, private surveyService : SurveyService) {
+    this.survey = new Survey();
+   }
 
   ngOnInit() {
     this.model = new Client();
@@ -38,13 +39,10 @@ export class ClientComponent implements OnInit {
       this.clientService.getClient(this.identifiant, this.survey).subscribe(
         (oldClient) => {
           client = oldClient;
-          console.log("client ", client);
           if (client){
-            console.log("j'enregistre un client ", client);
             this.clientService.createResponse(client, this.survey);
           }else {
             this.errorClient = " pas de client à ce numéro";
-            console.log("errorClient ", this.errorClient);
           }
          },
         (error) => console.log(error)
@@ -55,7 +53,6 @@ export class ClientComponent implements OnInit {
 
     resetErrorClient(){
       this.errorClient = "";
-      console.log("apres blur " , this.errorClient);
     }
 
 	}

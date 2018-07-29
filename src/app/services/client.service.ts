@@ -14,7 +14,6 @@ export class ClientService {
   private apiUrlClient:string;
   private apiUrlResponse:string;
   private apiUrlClientNumero:string;
-  private oldClient : Client;
 
   constructor(private httpClient: HttpClient,  private router : Router) {
     this.apiUrlClient = ENV.ApiUrl +"client";
@@ -24,14 +23,12 @@ export class ClientService {
    }
 
   createClient (client : Client, survey : Survey){
-	  this.httpClient.post<Client>(this.apiUrlClient, client)
-			.subscribe((newClient) => {
-				// Si HTTP POST success.   
+	  this.httpClient.post<Client>(this.apiUrlClient, client).subscribe(
+      (newClient) => {   
         this.createResponse(newClient, survey);
-			}, (error) => {
-				// Sinon si erreur.
-				console.log(error);
-			});
+      }, 
+      (error) => console.log(error)
+      )
   }
 
   createResponse (client : Client, survey : Survey){
@@ -41,8 +38,7 @@ export class ClientService {
     response.survey = survey; 
     response.client = client;
     this.httpClient.post<Response>(this.apiUrlResponse, response).subscribe(
-        (s) => {
-          console.log(s);
+        () => {
           this.router.navigateByUrl('messageConfirmation');
         } ,     
        (error) => console.log(error)

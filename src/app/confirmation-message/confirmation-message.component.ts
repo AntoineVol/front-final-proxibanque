@@ -12,12 +12,13 @@ export class ConfirmationMessageComponent implements OnInit {
   private survey : Survey;
   private convocation : string;
 
-  constructor(private surveyService : SurveyService) { }
+  constructor(private surveyService : SurveyService) { 
+    this.survey = new Survey();
+  }
 
   ngOnInit() {
     this.surveyService.survey.subscribe((s) => this.survey= s);
     this.calculDiffDay();
-    console.log("passage par init");
     
   }
 
@@ -29,8 +30,6 @@ export class ConfirmationMessageComponent implements OnInit {
     if (nbjours <= 0 ){
       this.convocation = "quelques";
     }
-
-    console.log("convocation "+this.convocation);
   }
 
 

@@ -7,7 +7,7 @@
           <form #idForm = "ngForm" (ngSubmit)="idForm.valid && oldC(idForm)">
             <div class="form-group" [ngClass]="{'was-validated': idForm.submitted}">
               <label for="number">Numéro d'identification</label>
-              <input id="number" type="text" (blur)="resetErrorClient()" name="number" [(ngModel)]="identifiant" #number="ngModel"   pattern="^\d{8}$" class="form-control" required maxlength="8">
+              <input id="number" type="text" (focus)="resetErrorClient()" name="number" [(ngModel)]="identifiant" #number="ngModel"   pattern="^\d{8}$" class="form-control" required maxlength="8">
               <span class="text-danger" *ngIf="number.errors?.pattern">numéro doit avoir 8 chiffres</span>
               <span class="text-danger" *ngIf="(idForm.submitted && number.errors?.required)">numéro est requis</span>
               <span class="text-danger" *ngIf="errorClient">{{errorClient}}</span>
