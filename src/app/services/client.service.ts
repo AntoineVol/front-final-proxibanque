@@ -26,13 +26,8 @@ export class ClientService {
   createClient (client : Client, survey : Survey){
 	  this.httpClient.post<Client>(this.apiUrlClient, client)
 			.subscribe((newClient) => {
-				// Si HTTP POST success.
-        let res : Response = new Response();
-        res.newClient = true;
-        res.positiveResponse = true;
-        res.survey = survey; 
-        res.client = newClient;      
-        this.createResponse(res);
+				// Si HTTP POST success.   
+        this.createResponse(newClient, survey);
         this.router.navigateByUrl('messageConfirmation');
 			}, (error) => {
 				// Sinon si erreur.
@@ -40,8 +35,12 @@ export class ClientService {
 			});
   }
 
-  createResponse (response : Response){
-    console.log("response envoyé" + response.survey);
+  createResponse (client : Client, survey : Survey){
+    let response : Response = new Response();
+    response.newClient = true;
+    response.positiveResponse = true;
+    response.survey = survey; 
+    response.client = client;
     this.httpClient.post<Response>(this.apiUrlResponse, response).subscribe(
         (s) => {
           console.log(s);
@@ -52,19 +51,10 @@ export class ClientService {
   }
 
 
-  getClient(identifiant : string, survey : Survey) {
-    let client : Client = new Client();
-    this.httpClient.get<Client>(this.apiUrlClientNumero + `/${identifiant}`).subscribe(
-      (oldClient) => {
-        let res : Response = new Response;
-        res.newClient = true;
-        res.positiveResponse = true;
-        res.survey = survey; 
-        res.client = oldClient;      
-        this.createResponse(res);
-        this.router.navigateByUrl('messageConfirmation');
-      }
-    )
+  getClient(identifiant : string, survey : Survey) : Observable<Client>  {
+    
+    return this.httpClient.get<Client>(this.apiUrlClientNumero + `/${identifiant}`);
+ 
   }
 
 

@@ -13,11 +13,11 @@ import { Response } from '../POJO/response';
 })
 export class ClientComponent implements OnInit {
 
- // @Output() onCreate: EventEmitter<Client>;
- // @Output() onSave : EventEmitter<Client>;
+
   private model : Client;
   private identifiant : string;
   private survey : Survey;
+  private errorClient : String;
 
   constructor(private clientService : ClientService, private surveyService : SurveyService) { }
 
@@ -34,11 +34,29 @@ export class ClientComponent implements OnInit {
     } 
     
     oldC(form: NgForm)  {
-      let client : Client;
-      this.clientService.getClient(this.identifiant, this.survey);
-      
+      let client : Client = new Client();
+      this.clientService.getClient(this.identifiant, this.survey).subscribe(
+        (oldClient) => {
+          client = oldClient;
+          console.log("client ", client);
+          if (client){
+            console.log("j'enregistre un client ", client);
+            this.clientService.createResponse(client, this.survey);
+          }else {
+            this.errorClient = " pas de client à ce numéro";
+            console.log("errorClient ", this.errorClient);
+          }
+         },
+        (error) => console.log(error)
+       
+      )    
       form.resetForm;
     } 
+
+    resetErrorClient(){
+      this.errorClient = "";
+      console.log("apres blur " , this.errorClient);
+    }
 
 	}
 
