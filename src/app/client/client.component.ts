@@ -24,6 +24,8 @@ export class ClientComponent implements OnInit {
 
   ngOnInit() {
     this.model = new Client();
+    this.model.email="";
+    this.model.tel="";
     this.surveyService.survey.subscribe((s) => this.survey= s); 
   }
 

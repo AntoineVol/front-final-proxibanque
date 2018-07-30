@@ -35,17 +35,17 @@
               </div>
             <div class="form-group" [ngClass]="{'was-validated': createForm.submitted}"> 
                 <label for="email">Email</label>
-                <input id="email" name="email" type="text" #email="ngModel" class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="model.email" appRequiredIf="tel">
+                <input id="email" name="email" type="text" #email="ngModel" class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="model.email" [required]="!model.tel">
                 <span class="text-danger" *ngIf= "email.errors?.pattern">L'email renseigné n'est pas correcte</span> 
             </div>
   
             <div class="form-group" [ngClass]="{'was-validated': createForm.submitted}"> 
                 <label for="tel">Tel</label>
-                <input id="tel" name="tel" type="text" #tel ="ngModel" class="form-control" maxlength="10" pattern="^\d{10}$" [(ngModel)]="model.tel" appRequiredIf="email"> 
+                <input id="tel" name="tel" type="text" #tel ="ngModel" class="form-control" maxlength="10" pattern="^\d{10}$" [(ngModel)]="model.tel" [required]="!model.email"> 
                   <span class="text-danger" *ngIf="tel.errors?.pattern">Le numéro de téléphone doit avoir 10 chiffres</span>
-                  <span class="text-danger" *ngIf= "(createForm.submitted && !createForm.valid && !tel.errors?.pattern && !email.errors?.pattern  || email.errors?.appRequiredIf || tel.errors?.requiredIf)">Vous devez saisir un email et/ou un numéro de téléphone.</span>             
-            </div>
-            <button  class="btn btn-primary">Valider</button>
+                  <span class="text-danger" *ngIf= "(createForm.submitted && !createForm.valid && !tel.errors?.pattern && !email.errors?.pattern)">Vous devez saisir un email et/ou un numéro de téléphone.</span>             
+                </div>
+                <button  class="btn btn-primary">Valider</button>
           </form>
         </div>
       </div>
