@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SurveyCommentComponent } from './survey-comment/survey-comment.component';
 import { CommentConfirmationComponent } from './comment-confirmation/comment-confirmation.component';
 import { ConfirmationMessageComponent } from './confirmation-message/confirmation-message.component';
-import { RequiredIfDirective } from './required-if.directive';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +24,7 @@ import { RequiredIfDirective } from './required-if.directive';
     SurveyCommentComponent,
     CommentConfirmationComponent,
     ClientComponent,
-    ConfirmationMessageComponent,
-    RequiredIfDirective   
+    ConfirmationMessageComponent  
   ],
   imports: [
     BrowserModule,
