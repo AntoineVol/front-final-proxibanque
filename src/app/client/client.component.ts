@@ -42,7 +42,7 @@ export class ClientComponent implements OnInit {
         (oldClient) => {
           client = oldClient;
           if (client){
-            this.clientService.createResponse(client, this.survey);
+            this.clientService.createResponse(client, this.survey, false);
           }else {
             this.errorClient = "Votre identifiant n'a pas été reconnu";
           }

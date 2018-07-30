@@ -25,15 +25,15 @@ export class ClientService {
   createClient (client : Client, survey : Survey){
 	  this.httpClient.post<Client>(this.apiUrlClient, client).subscribe(
       (newClient) => {   
-        this.createResponse(newClient, survey);
+        this.createResponse(newClient, survey, true);
       }, 
       (error) => console.log(error)
       )
   }
 
-  createResponse (client : Client, survey : Survey){
+  createResponse (client : Client, survey : Survey, nouveau : boolean){
     let response : Response = new Response();
-    response.newClient = true;
+    response.newClient = nouveau;
     response.positiveResponse = true;
     response.survey = survey; 
     response.client = client;
