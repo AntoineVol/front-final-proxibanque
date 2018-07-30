@@ -20,6 +20,7 @@ export class SurveyCommentComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.response.comment = "";
     this.surveyService.survey.subscribe((s)=> (this.survey=s))
   }
 

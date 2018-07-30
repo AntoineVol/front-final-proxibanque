@@ -17,7 +17,8 @@
           <form class="form" (ngSubmit)="submit(commentForm)" #commentForm="ngForm">
             <div class="form-group">
               <!-- <label for="comment">Commentaire label</label> -->
-              <textarea id="comment" name="comment" class="form-control" [(ngModel)]="response.comment" placeholder="Aidez-nous à améliorer notre offre"></textarea>
+              <textarea id="comment" name="comment" class="form-control" [(ngModel)]="response.comment" placeholder="Aidez-nous à améliorer notre offre" maxlength="600"></textarea>
+              <small class="form-text form-muted">{{response.comment.length}}/600</small>
             </div>
             <button  type="submit" class="btn btn-primary">Envoyez nous votre avis</button>
           </form>
