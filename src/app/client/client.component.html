@@ -8,8 +8,8 @@
             <div class="form-group" [ngClass]="{'was-validated': idForm.submitted}">
               <label for="number">Numéro d'identification</label>
               <input id="number" type="text" (focus)="resetErrorClient()" name="number" [(ngModel)]="identifiant" #number="ngModel"   pattern="^\d{8}$" class="form-control" required maxlength="8">
-              <span class="text-danger" *ngIf="number.errors?.pattern">numéro doit avoir 8 chiffres</span>
-              <span class="text-danger" *ngIf="(idForm.submitted && number.errors?.required)">numéro est requis</span>
+              <span class="text-danger" *ngIf="number.errors?.pattern">Votre identifiant doit avoir 8 chiffres</span>
+              <span class="text-danger" *ngIf="(idForm.submitted && number.errors?.required)">Un identifiant est requis</span>
               <span class="text-danger" *ngIf="errorClient">{{errorClient}}</span>
             </div>
             <button  class="btn btn-primary">Valider</button>
@@ -25,24 +25,24 @@
               <label for="name">Nom</label>
               <input id="name" name="name" type="text" #name="ngModel" class="form-control" required  [(ngModel)]="model.lastName">
               <span class="text-danger"  [class.d-none]= "!(createForm.submitted && name.errors?.required)" 
-              [ngClass]="{'invalid-feedback':createForm.submitted && name.errors?.required}" > champ est requis </span>
+              [ngClass]="{'invalid-feedback':createForm.submitted && name.errors?.required}" > Champ requis </span>
             </div>
             <div class="form-group" [ngClass]="{'was-validated': createForm.submitted}">
                 <label for="firstName">Prénom</label>
-                <input id="firstName" name="firstName" #firstName="ngModel" type="text"  class="form-control" required [(ngModel)]="model.firstName"
-                >
-                <span class="text-danger" [class.d-none]= "!(createForm.submitted && firstName.errors?.required)" [ngClass]="{'invalid-feedback':createForm.submitted && firstName.errors?.required}">champ est requis</span>
+                <input id="firstName" name="firstName" #firstName="ngModel" type="text"  class="form-control" required [(ngModel)]="model.firstName">
+                <span class="text-danger" [class.d-none]= "!(createForm.submitted && firstName.errors?.required)" 
+                [ngClass]="{'invalid-feedback':createForm.submitted && firstName.errors?.required}">Champ requis</span>
               </div>
             <div class="form-group" [ngClass]="{'was-validated': createForm.submitted}"> 
                 <label for="email">Email</label>
                 <input id="email" name="email" type="text" #email="ngModel" class="form-control"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [(ngModel)]="model.email" appRequiredIf="tel">
-                <span class="text-danger" *ngIf= "email.errors?.pattern">email n'est pas correcte</span> 
+                <span class="text-danger" *ngIf= "email.errors?.pattern">L'email renseigné n'est pas correcte</span> 
             </div>
   
             <div class="form-group" [ngClass]="{'was-validated': createForm.submitted}"> 
                 <label for="tel">Tel</label>
-                <input id="tel" name="tel" type="text" #tel ="ngModel"  class="form-control" pattern="^\d{10}$" [(ngModel)]="model.tel" appRequiredIf="email"> 
-                  <span class="text-danger" *ngIf="tel.errors?.pattern">numéro doit avoir 10 chiffres</span>
+                <input id="tel" name="tel" type="text" #tel ="ngModel" class="form-control" maxlength="10" pattern="^\d{10}$" [(ngModel)]="model.tel" appRequiredIf="email"> 
+                  <span class="text-danger" *ngIf="tel.errors?.pattern">Le numéro de téléphone doit avoir 10 chiffres</span>
                   <span class="text-danger" *ngIf= "(createForm.submitted && !createForm.valid && !tel.errors?.pattern && !email.errors?.pattern  || email.errors?.appRequiredIf || tel.errors?.requiredIf)">Vous devez saisir un email et/ou un numéro de téléphone.</span>             
             </div>
             <button  class="btn btn-primary">Valider</button>
